@@ -18,21 +18,37 @@
 
 <body data-theme="light">
 
-    <!-- ======== ヘッダー ======== -->
+    <!-- ======== ヘッダー (JRAスタイル 3段構成) ======== -->
     <header class="app-header">
-        <div class="header-top">
-            <span>🐴 JRA-STYLE UI Ver.</span>
-        </div>
-        <div class="header-main">
-            <div class="logo">
-                <div class="logo-main-text"><span class="logo-icon">🏇</span> KEIBA LEDGER</div>
-                <div class="logo-sub-text">収支管理・インターネット記録サービス</div>
+        <!-- 1段目: ユーティリティ＆システムバー -->
+        <div class="header-utility">
+            <div class="header-inner">
+                <span class="system-name">KEIBA LEDGER System</span>
+                <span class="system-time" id="headerTime"></span>
             </div>
-            <!-- Theme toggle now inside header-main -->
-            <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
-                <span class="theme-icon">☀️</span> ライト
-            </button>
         </div>
+
+        <!-- 2段目: ブランドロゴエリア -->
+        <div class="header-brand">
+            <div class="header-inner position-relative">
+                <div class="brand-swoosh"></div>
+                <div class="logo">
+                    <div class="logo-main-text"><span class="logo-icon">🏇</span> KEIBA LEDGER</div>
+                    <div class="logo-sub-text">収支管理・インターネット記録サービス</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3段目: グローバルナビゲーション -->
+        <nav class="global-nav">
+            <div class="header-inner nav-container">
+                <button class="nav-item active" data-nav="dashboard">ダッシュボード</button>
+                <button class="nav-item" data-nav="add">記録入力</button>
+                <button class="nav-item" data-nav="history">購入履歴</button>
+                <button class="nav-item" data-nav="analysis">分析・統計</button>
+                <button class="nav-item" data-nav="settings">設定</button>
+            </div>
+        </nav>
     </header>
 
     <!-- ======== メインコンテンツ ======== -->
@@ -571,13 +587,10 @@
                     <h3>表示</h3>
                     <div class="settings-item">
                         <div class="settings-info">
-                            <span class="settings-label">テーマ</span>
-                            <span class="settings-desc">JRAライト（標準） / ダーク（任意）</span>
+                            <span class="settings-label">デザインテーマ</span>
+                            <span class="settings-desc">JRAオフィシャルスタイルに完全固定されています</span>
                         </div>
-                        <select id="themeSelect">
-                            <option value="light">JRAライト</option>
-                            <option value="dark">ダーク(非推奨)</option>
-                        </select>
+                        <span class="status-badge">固定</span>
                     </div>
                 </div>
                 <div class="settings-section">
@@ -623,29 +636,7 @@
         </section>
     </main>
 
-    <!-- ======== ボトムナビ ======== -->
-    <nav class="bottom-nav" id="bottomNav">
-        <button class="nav-item active" data-nav="dashboard">
-            <span class="nav-icon">📊</span>
-            <span class="nav-label">ダッシュボード</span>
-        </button>
-        <button class="nav-item" data-nav="add">
-            <span class="nav-icon nav-icon-add">＋</span>
-            <span class="nav-label">記録</span>
-        </button>
-        <button class="nav-item" data-nav="history">
-            <span class="nav-icon">📋</span>
-            <span class="nav-label">履歴</span>
-        </button>
-        <button class="nav-item" data-nav="analysis">
-            <span class="nav-icon">📈</span>
-            <span class="nav-label">分析</span>
-        </button>
-        <button class="nav-item" data-nav="settings">
-            <span class="nav-icon">⚙️</span>
-            <span class="nav-label">設定</span>
-        </button>
-    </nav>
+    <!-- ボトムナビは廃止し、グローバルナビゲーションに統合しました -->
 
     <!-- ======== 確認モーダル ======== -->
     <div class="modal-overlay" id="modalOverlay">

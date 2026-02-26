@@ -569,15 +569,7 @@ function refreshSettings() {
 }
 
 function applyTheme(theme) {
-    document.body.dataset.theme = theme;
-    const icon = $('#themeToggle .theme-icon');
-    icon.textContent = theme === 'dark' ? '🌙' : '☀️';
-
-    // Update theme toggle text
-    const toggleBtn = $('#themeToggle');
-    if (toggleBtn) {
-        toggleBtn.innerHTML = `<span class="theme-icon">${theme === 'dark' ? '🌙' : '☀️'}</span> ${theme === 'dark' ? 'ダーク' : 'ライト'}`;
-    }
+    document.body.dataset.theme = 'light'; // Always light for JRA style
 }
 
 // ============================================================
@@ -646,9 +638,8 @@ function attachNavListeners(container) {
 // イベントリスナー初期化
 // ============================================================
 function init() {
-    // テーマ適用
-    const settings = getSettings();
-    applyTheme(settings.theme || 'light');
+    // Theme handling (Fixed JRA Style)
+    applyTheme('light');
 
     // ナビゲーション
     $$('.nav-item, [data-nav]').forEach(el => {
@@ -658,20 +649,7 @@ function init() {
         });
     });
 
-    // テーマトグル（ヘッダー）
-    $('#themeToggle').addEventListener('click', () => {
-        const current = document.body.dataset.theme;
-        const next = current === 'dark' ? 'light' : 'dark';
-        applyTheme(next);
-        saveSettings({ ...getSettings(), theme: next });
-        $('#themeSelect').value = next;
-    });
-
-    // テーマセレクト（設定）
-    $('#themeSelect').addEventListener('change', (e) => {
-        applyTheme(e.target.value);
-        saveSettings({ ...getSettings(), theme: e.target.value });
-    });
+    // (Removed themeSelect event listener as theme is fixed)
 
     // ダッシュボード期間切替
     $('#dashboardPeriod').addEventListener('change', () => refreshDashboard());
@@ -826,7 +804,7 @@ function init() {
             showLoading('画像を生成中...');
             const dashboardCard = $('#summaryCards');
             const canvas = await html2canvas(dashboardCard, {
-                backgroundColor: document.body.dataset.theme === 'dark' ? '#121212' : '#ffffff',
+                backgroundColor: '#f5f7f8',
                 scale: 2,
                 logging: false,
                 useCORS: true

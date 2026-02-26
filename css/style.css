@@ -12,81 +12,76 @@
 }
 
 :root {
-    /* JRA Official Style (Solid Light Theme) */
-    --bg-primary: #f2f2f2;
-    /* Light Gray Background */
+    /* JRA Corporate Portal Style (Ver 2.0) */
+    --bg-primary: #f5f7f8;
+    /* Portal Gray Background */
     --bg-secondary: #ffffff;
-    /* White Panels */
     --bg-card: #ffffff;
-    --bg-card-hover: #f9f9f9;
+    --bg-card-hover: #f0f4f8;
     --bg-input: #ffffff;
-    --bg-nav: #ffffff;
-    --bg-modal: rgba(0, 0, 0, 0.7);
+    --bg-nav: #007a3d;
+    /* Global Nav Green */
+    --bg-modal: rgba(34, 34, 34, 0.8);
 
-    --text-primary: #333333;
-    /* Dark Gray / Black */
-    --text-secondary: #666666;
-    --text-muted: #999999;
+    --text-primary: #222222;
+    /* JRA Black */
+    --text-secondary: #555555;
+    --text-muted: #888888;
+    --text-inverse: #ffffff;
+    /* Text on dark/green bg */
 
     /* JRA Brand Colors */
-    --accent-green: #008f3e;
-    /* JRA Green */
-    --accent-green-dim: rgba(0, 143, 62, 0.1);
+    --accent-green: #007a3d;
+    /* JRA Main Green */
+    --accent-green-sub: #00a651;
+    /* JRA Sub Green */
+    --accent-green-dim: rgba(0, 122, 61, 0.1);
+
     --accent-gold: #f3c300;
-    /* JRA Yellow / Gold */
+    /* JRA Gold/Yellow */
     --accent-gold-dim: rgba(243, 195, 0, 0.15);
-    --accent-gold-glow: rgba(243, 195, 0, 0.4);
-    --accent-jra-black: #1a1a1a;
-    /* Top Header Black */
+
+    --accent-jra-black: #222222;
+    /* Header Top Black */
 
     --accent-red: #d32f2f;
     --accent-red-dim: rgba(211, 47, 47, 0.1);
     --accent-blue: #1976d2;
     --accent-blue-dim: rgba(25, 118, 210, 0.1);
 
-    --border: #e0e0e0;
-    --border-input: #cccccc;
+    /* Solid Borders */
+    --border: #dddddd;
+    /* Solid gray border */
+    --border-dark: #cccccc;
+    --border-input: #bbbbbb;
     --border-focus: var(--accent-green);
 
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
-    --shadow-gold: none;
-    /* Removed glow shadows for solid style */
+    /* Very subtle or no shadows for portal look */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.12);
 
-    --radius-sm: 4px;
-    /* Smaller radius for solid style */
-    --radius-md: 6px;
-    --radius-lg: 8px;
-    --radius-xl: 12px;
+    /* Sharp corners */
+    --radius-sm: 2px;
+    --radius-md: 4px;
+    --radius-lg: 6px;
+    --radius-xl: 8px;
 
     --font-main: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
-    --nav-height: 70px;
     --header-height: auto;
-    /* Allow flexible height for 2-tier header */
 
-    --transition-fast: 0.15s ease-in-out;
-    --transition-normal: 0.25s ease-in-out;
-    --transition-slow: 0.4s ease-in-out;
+    --transition-fast: 0.1s ease-in-out;
+    --transition-normal: 0.2s ease-in-out;
+    --transition-slow: 0.3s ease-in-out;
 }
 
-/* Light Theme (Override completely since default is now light) */
-[data-theme="light"] {
-    /* Kept empty as root is now light */
-}
-
-[data-theme="dark"] {
-    /* Optional: fallback or inverted if users toggle, but focus is JRA Light */
-    --bg-primary: #121212;
-    --bg-secondary: #1e1e1e;
-    --bg-card: #1e1e1e;
-    --bg-card-hover: #2c2c2c;
-    --bg-input: #2c2c2c;
-    --bg-nav: #1e1e1e;
-    --text-primary: #f0f0f0;
-    --text-secondary: #b0b0b0;
-    --border: #333333;
-    --border-input: #444444;
+/* Corporate Light Theme is the only theme */
+body {
+    font-family: var(--font-main);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 html {
@@ -94,68 +89,71 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
-body {
-    font-family: var(--font-main);
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    min-height: 100vh;
-    padding-bottom: var(--nav-height);
-    overflow-x: hidden;
-    transition: background var(--transition-normal), color var(--transition-normal);
-}
-
-/* --- ヘッダー (JRAスタイル・2段構成) --- */
+/* --- ヘッダー (JRAスタイル・3段構成) --- */
 .app-header {
     width: 100%;
-    background: var(--bg-nav);
-    border-bottom: 2px solid var(--border);
-    /* Remove sticky/blur for a more solid traditional feel, or keep sticky if preferred.
-       Let's keep sticky but without blur. */
-    position: sticky;
-    top: 0;
+    background: var(--bg-secondary);
+    border-bottom: 3px solid var(--accent-green);
+    position: relative;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    box-shadow: var(--shadow-md);
 }
 
-.header-top {
-    background: var(--accent-jra-black);
-    color: #ffffff;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    font-size: 0.8rem;
-}
-
-.header-top span {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.header-main {
+.header-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 16px 20px;
+    padding: 0 20px;
+}
+
+/* 1段目: ユーティリティバー */
+.header-utility {
+    background: var(--accent-jra-black);
+    color: var(--text-inverse);
+    height: 30px;
+    font-size: 0.75rem;
+}
+
+.header-utility .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100%;
+}
+
+.system-name {
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    color: #aaaaaa;
+}
+
+.system-time {
+    color: #dddddd;
+    font-family: monospace;
+}
+
+/* 2段目: ブランドエリア */
+.header-brand {
+    background: #ffffff;
+    padding: 20px 0;
     position: relative;
     overflow: hidden;
 }
 
-/* JRA Yellow Swoosh background simulation */
-.header-main::before {
-    content: '';
+.position-relative {
+    position: relative;
+}
+
+/* 黄金のスウッシュライン */
+.brand-swoosh {
     position: absolute;
-    top: -20px;
-    right: -50px;
-    width: 300px;
-    height: 100px;
-    border: 3px solid var(--accent-gold);
-    border-radius: 50%;
-    transform: rotate(-15deg);
-    opacity: 0.6;
+    top: 50%;
+    left: 280px;
+    transform: translateY(-50%) rotate(-5deg);
+    width: 800px;
+    height: 120px;
+    border-top: 5px solid var(--accent-gold);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    opacity: 0.8;
     pointer-events: none;
 }
 
@@ -164,45 +162,72 @@ body {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .logo-main-text {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 900;
     color: var(--accent-green);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     font-family: 'Arial Black', var(--font-main);
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 2px;
+    text-shadow: 1px 1px 0 #fff, 2px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 .logo-sub-text {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     font-weight: 600;
+    padding-left: 4px;
 }
 
-.theme-toggle {
-    background: #f0f0f0;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 6px 12px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    color: var(--text-primary);
-    font-weight: bold;
+/* 3段目: グローバルナビゲーション */
+.global-nav {
+    background: var(--bg-nav);
+    /* JRA Green */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-container {
     display: flex;
     align-items: center;
-    gap: 6px;
-    z-index: 1;
+    height: 44px;
 }
 
-.theme-toggle:hover {
-    background: #e0e0e0;
+.global-nav .nav-item {
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-inverse);
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 0 24px;
+    height: 100%;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global-nav .nav-item:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.global-nav .nav-item:hover,
+.global-nav .nav-item.active {
+    background: var(--accent-green-sub);
+    color: #ffffff;
+}
+
+.global-nav .nav-item.active {
+    box-shadow: inset 0 -4px 0 var(--accent-gold);
 }
 
 /* --- メインコンテンツ --- */
@@ -275,7 +300,8 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 4px;
+    width: 6px;
+    /* Slightly thicker line for corporate feel */
     border-radius: var(--radius-sm) 0 0 var(--radius-sm);
 }
 
@@ -404,71 +430,99 @@ body {
     gap: 8px;
 }
 
-/* --- 履歴アイテム (ソリッドな馬券風) --- */
+/* --- 履歴アイテム (本物の勝馬投票券風) --- */
 .record-item {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
+    background: #eef5f0;
+    /* Very slight green tint like real tickets */
+    border: 1px solid #007a3d;
+    /* JRA Green border */
+    border-radius: 0;
+    /* Square edges */
+    padding: 12px 16px;
     display: flex;
     align-items: center;
     gap: 14px;
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.05);
+    /* Slight hard shadow */
     position: relative;
     overflow: hidden;
+    font-family: 'MS Mincho', 'Yu Mincho', serif;
+    /* Mincho for authentic feel */
 }
 
-/* 馬券風の透かしパターン追加 */
-.record-item::after {
+/* 左端のパンチ穴風ライン */
+.record-item::before {
     content: '';
     position: absolute;
+    top: 5px;
+    left: 6px;
+    bottom: 5px;
+    width: 4px;
+    background-image: radial-gradient(#007a3d 1px, transparent 2px);
+    background-size: 4px 10px;
+}
+
+/* 上部のJRA装飾帯 */
+.record-item::after {
+    content: 'JRA 勝馬投票券';
+    position: absolute;
     top: 0;
-    left: 0;
+    left: 20px;
     right: 0;
-    bottom: 0;
-    background-image: radial-gradient(var(--border) 1px, transparent 1px);
-    background-size: 10px 10px;
-    opacity: 0.3;
+    height: 16px;
+    background: rgba(0, 122, 61, 0.05);
+    border-bottom: 1px dashed #007a3d;
+    font-size: 0.55rem;
+    color: #007a3d;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-family: 'Noto Sans JP', sans-serif;
+    letter-spacing: 0.2em;
     pointer-events: none;
     z-index: 0;
 }
 
-.record-item>* {
-    z-index: 1;
-    position: relative;
-}
-
 .record-item:hover {
-    background: var(--bg-card-hover);
-    border-left: 4px solid var(--accent-green);
+    background: #e4efe7;
 }
 
 .record-result {
     width: 42px;
     height: 42px;
+    border: 2px solid var(--accent-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-    font-weight: 700;
+    font-weight: 900;
     flex-shrink: 0;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--accent-green);
+    background: #ffffff;
 }
 
 .record-result.win {
-    background: var(--accent-green-dim);
-    color: var(--accent-green);
+    background: #ffebee;
+    border-color: var(--accent-red);
+    color: var(--accent-red);
 }
 
 .record-result.lose {
-    background: var(--accent-red-dim);
-    color: var(--accent-red);
+    opacity: 0.5;
+    border-color: #999;
+    color: #999;
 }
 
 .record-info {
     flex: 1;
     min-width: 0;
+    padding-top: 14px;
+    /* Space for the top banner */
+    padding-left: 8px;
+    /* Space for holes */
 }
 
 .record-top {
@@ -476,26 +530,27 @@ body {
     align-items: center;
     gap: 8px;
     flex-wrap: wrap;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .record-date {
     font-size: 0.8rem;
-    color: var(--text-secondary);
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text-primary);
 }
 
 .record-racecourse {
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 4px;
-    background: var(--accent-gold-dim);
-    color: var(--accent-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 1px 6px;
 }
 
 .record-race-number {
-    font-size: 0.75rem;
-    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 /* =========================================
@@ -538,30 +593,34 @@ body {
 }
 
 .record-race-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--accent-gold);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .record-grade {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     font-weight: 700;
     padding: 1px 6px;
-    border-radius: 3px;
-    background: var(--accent-blue-dim);
+    border: 1px solid var(--accent-blue);
     color: var(--accent-blue);
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .record-bottom {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-top: 4px;
 }
 
 .record-bettype {
-    font-weight: 500;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
 }
 
 .record-amounts {
@@ -570,6 +629,7 @@ body {
     align-items: flex-end;
     flex-shrink: 0;
     gap: 2px;
+    font-family: 'Noto Sans JP', sans-serif;
 }
 
 .record-amount {
@@ -579,16 +639,16 @@ body {
 }
 
 .record-payout {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 700;
 }
 
 .record-payout.win {
-    color: var(--accent-green);
+    color: var(--accent-red);
 }
 
 .record-payout.lose {
-    color: var(--accent-red);
+    color: var(--text-muted);
 }
 
 .record-actions {
@@ -757,25 +817,35 @@ body {
     gap: 8px;
     padding: 10px 24px;
     border: 1px solid transparent;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     font-family: var(--font-main);
     font-size: 0.95rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    transition: all var(--transition-fast);
+    /* Physical button feel */
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(2px);
+    box-shadow: none;
 }
 
 .btn-primary {
     background-color: var(--accent-green);
     color: #ffffff;
-}
-
-.btn-primary:hover {
-    background-color: #007331;
+    border-bottom: 3px solid #005a2d;
+    /* Darker green bottom border */
 }
 
 .btn-primary:active {
-    background-color: #005a26;
+    border-bottom: 0px solid #005a2d;
+    margin-top: 3px;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-green-sub);
 }
 
 .btn-secondary {
@@ -1082,76 +1152,8 @@ body {
     outline: none;
 }
 
-/* --- ボトムナビ --- */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    background: var(--bg-nav);
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: var(--nav-height);
-    padding: 0 8px;
-    padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-    font-family: var(--font-main);
-    flex: 1;
-}
-
-.nav-item:hover {
-    color: var(--text-secondary);
-}
-
-.nav-item.active {
-    color: var(--accent-gold);
-}
-
-.nav-icon {
-    font-size: 1.4rem;
-}
-
-.nav-icon-add {
-    background-color: var(--accent-green);
-    color: #ffffff;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.6rem;
-    font-weight: bold;
-    box-shadow: var(--shadow-sm);
-    transition: background-color var(--transition-fast);
-}
-
-.nav-item:hover .nav-icon-add {
-    background-color: #007331;
-}
-
-.nav-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-}
+/* --- ボトムナビ (廃止) --- */
+/* .bottom-nav has been removed and integrated into global-nav */
 
 /* --- モーダル --- */
 .modal-overlay {
