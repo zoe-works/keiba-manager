@@ -164,9 +164,9 @@ export function getUniqueRaceNames() {
 export function getSettings() {
     try {
         const raw = localStorage.getItem(SETTINGS_KEY);
-        return raw ? JSON.parse(raw) : { theme: 'dark', targetROI: 0 };
+        return raw ? JSON.parse(raw) : { theme: 'light', targetROI: 0 };
     } catch {
-        return { theme: 'dark', targetROI: 0 };
+        return { theme: 'light', targetROI: 0 };
     }
 }
 

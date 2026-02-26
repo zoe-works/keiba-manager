@@ -16,17 +16,21 @@
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.0.3/dist/tesseract.min.js"></script>
 </head>
 
-<body data-theme="dark">
+<body data-theme="light">
 
     <!-- ======== ヘッダー ======== -->
     <header class="app-header">
-        <div class="header-inner">
+        <div class="header-top">
+            <span>🐴 JRA-STYLE UI Ver.</span>
+        </div>
+        <div class="header-main">
             <div class="logo">
-                <span class="logo-icon">🏇</span>
-                <h1>KEIBA <span class="logo-accent">LEDGER</span></h1>
+                <div class="logo-main-text"><span class="logo-icon">🏇</span> KEIBA LEDGER</div>
+                <div class="logo-sub-text">収支管理・インターネット記録サービス</div>
             </div>
+            <!-- Theme toggle now inside header-main -->
             <button class="theme-toggle" id="themeToggle" aria-label="テーマ切替">
-                <span class="theme-icon">🌙</span>
+                <span class="theme-icon">☀️</span> ライト
             </button>
         </div>
     </header>
@@ -568,11 +572,11 @@
                     <div class="settings-item">
                         <div class="settings-info">
                             <span class="settings-label">テーマ</span>
-                            <span class="settings-desc">ダークモード / ライトモード</span>
+                            <span class="settings-desc">JRAライト（標準） / ダーク（任意）</span>
                         </div>
                         <select id="themeSelect">
-                            <option value="dark">ダーク</option>
-                            <option value="light">ライト</option>
+                            <option value="light">JRAライト</option>
+                            <option value="dark">ダーク(非推奨)</option>
                         </select>
                     </div>
                 </div>

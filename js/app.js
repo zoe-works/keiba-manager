@@ -564,7 +564,7 @@ function refreshSettings() {
     $('#settingsRecordCount').textContent = records.length + '件';
 
     const settings = getSettings();
-    $('#themeSelect').value = settings.theme || 'dark';
+    $('#themeSelect').value = settings.theme || 'light';
     $('#inputTargetROI').value = settings.targetROI || '';
 }
 
@@ -572,6 +572,12 @@ function applyTheme(theme) {
     document.body.dataset.theme = theme;
     const icon = $('#themeToggle .theme-icon');
     icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+
+    // Update theme toggle text
+    const toggleBtn = $('#themeToggle');
+    if (toggleBtn) {
+        toggleBtn.innerHTML = `<span class="theme-icon">${theme === 'dark' ? '🌙' : '☀️'}</span> ${theme === 'dark' ? 'ダーク' : 'ライト'}`;
+    }
 }
 
 // ============================================================
@@ -642,7 +648,7 @@ function attachNavListeners(container) {
 function init() {
     // テーマ適用
     const settings = getSettings();
-    applyTheme(settings.theme || 'dark');
+    applyTheme(settings.theme || 'light');
 
     // ナビゲーション
     $$('.nav-item, [data-nav]').forEach(el => {
@@ -820,7 +826,7 @@ function init() {
             showLoading('画像を生成中...');
             const dashboardCard = $('#summaryCards');
             const canvas = await html2canvas(dashboardCard, {
-                backgroundColor: document.body.dataset.theme === 'dark' ? '#0b0f12' : '#f0f2f5',
+                backgroundColor: document.body.dataset.theme === 'dark' ? '#121212' : '#ffffff',
                 scale: 2,
                 logging: false,
                 useCORS: true
